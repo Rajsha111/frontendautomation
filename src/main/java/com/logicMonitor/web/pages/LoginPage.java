@@ -15,10 +15,21 @@ public class LoginPage extends PageBase {
         super(driver);
     }
 
+    /**
+     * Verify login page loaded
+     *
+     * @return True if page title matches with 'Sign in – Google accounts'
+     */
     public boolean isPageLoaded() {
         return driver.getTitle().equals("Sign in – Google accounts");
     }
 
+    /**
+     * Enter email or phone
+     *
+     * @param emailOrPhone
+     * @return login page
+     */
     private LoginPage enterEmailOrPhone(String emailOrPhone) {
         if (waitForElementDisplayed(By.id(ID_USERNAME), 10, 20)) {
             driver.findElement(By.id(ID_USERNAME)).sendKeys(emailOrPhone);
@@ -27,6 +38,12 @@ public class LoginPage extends PageBase {
         return null;
     }
 
+    /**
+     * Enter password
+     *
+     * @param password
+     * @return login page
+     */
     private LoginPage enterPassword(String password) {
         if (waitForElementDisplayed(By.xpath(XPATH_PASSWORD), 10, 20)) {
             driver.findElement(By.xpath(XPATH_PASSWORD)).sendKeys(password);
@@ -35,6 +52,11 @@ public class LoginPage extends PageBase {
         return null;
     }
 
+    /**
+     * Click on next button after entering phone or email
+     *
+     * @return login page
+     */
     private LoginPage clickOnNext() {
         if (waitForElementDisplayed(By.id(ID_NEXT), 10, 20)) {
             clickOnElementUsingJquery(driver.findElement(By.id(ID_NEXT)));
@@ -43,6 +65,11 @@ public class LoginPage extends PageBase {
         return null;
     }
 
+    /**
+     * Click on next button after entering password
+     *
+     * @return inbox page
+     */
     private InboxPage clickPasswordNext() {
         try {
             Thread.sleep(2000);
@@ -55,8 +82,15 @@ public class LoginPage extends PageBase {
         return null;
     }
 
-    public InboxPage login(String userName, String password) {
-        enterEmailOrPhone(userName).clickOnNext().enterPassword(password);
+    /**
+     * Login with email and password
+     *
+     * @param email
+     * @param password
+     * @return inbox page
+     */
+    public InboxPage login(String email, String password) {
+        enterEmailOrPhone(email).clickOnNext().enterPassword(password);
         return clickPasswordNext();
     }
 }

@@ -7,10 +7,7 @@ import com.logicMonitor.web.common.PropertyManager;
 import com.logicMonitor.web.pages.InboxPage;
 import com.logicMonitor.web.pages.LoginPage;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class MyTest extends BaseTest {
 
@@ -24,8 +21,13 @@ public class MyTest extends BaseTest {
 
         // Login to the application
         LoginPage loginPage = new LoginPage(driver);
-        inboxPage = loginPage.login(PropertyManager.getInstance().getValue("user"), PropertyManager.getInstance().getValue("password"));
+        inboxPage = loginPage.login(PropertyManager.getInstance().getValue("email"), PropertyManager.getInstance().getValue("password"));
         Assert.assertTrue(inboxPage.isPageLoaded(), "Inbox page is not loaded");
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void logout() {
+        inboxPage.logout();
     }
 
     @Test(priority = -1, description = "verifyPrimaryHeaderDefaultSelect")
@@ -42,6 +44,7 @@ public class MyTest extends BaseTest {
         String subject = inboxPage.getSubject(Integer.valueOf(mailIndexNo));
         System.out.println("Mail subject on tab '" + tabName + "' for mail no- '" + mailIndexNo + "' is: " + subject);
         String sender = inboxPage.getSender(Integer.valueOf(mailIndexNo));
+
         System.out.println("Mail Sender on tab '" + tabName + "' for mail no- '" + mailIndexNo + "' is: " + sender);
     }
 
