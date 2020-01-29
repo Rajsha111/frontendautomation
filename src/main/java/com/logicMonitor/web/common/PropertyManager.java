@@ -54,4 +54,14 @@ public class PropertyManager {
         return System.getenv("baseUrl") != null ? System.getenv("baseUrl")
                 : getServerConfigMAP().get("baseUrl");
     }
+
+    public String getEmail() {
+        return System.getenv("email") != null ? System.getenv("email")
+                : getServerConfigMAP().get("email");
+    }
+
+    public String getPassword() {
+        return System.getenv("password") != null ? System.getenv("password")
+                : getServerConfigMAP().get("password");
+    }
 }

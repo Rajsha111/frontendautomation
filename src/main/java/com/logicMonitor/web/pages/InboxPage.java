@@ -25,7 +25,7 @@ public class InboxPage extends PageBase {
      * @return True if inbox page loaded
      */
     public boolean isPageLoaded() {
-        return waitForTitle("Inbox - " + PropertyManager.getInstance().getValue("user") + " - Gmail", 10, 5);
+        return waitForTitle("Inbox - " + PropertyManager.getInstance().getEmail() + " - Gmail", 10, 5);
     }
 
     /**

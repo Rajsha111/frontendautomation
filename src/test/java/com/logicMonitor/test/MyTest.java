@@ -21,7 +21,7 @@ public class MyTest extends BaseTest {
 
         // Login to the application
         LoginPage loginPage = new LoginPage(driver);
-        inboxPage = loginPage.login(PropertyManager.getInstance().getValue("email"), PropertyManager.getInstance().getValue("password"));
+        inboxPage = loginPage.login(PropertyManager.getInstance().getEmail(), b64decode(PropertyManager.getInstance().getPassword()));
         Assert.assertTrue(inboxPage.isPageLoaded(), "Inbox page is not loaded");
     }
 
