@@ -19,9 +19,9 @@ Steps to run-
 6. Change the parameter value if required else test will run on default parameter values. Now mail index set to 1 as there is only 1 mail in the test account-
       <parameter name="tabName" value="SOCIAL"/> (value can be 'SOCIAL', 'PRIMARY', 'PROMOTION')
         <parameter name="mailIndexNo" value="1"/> (value should be an index of mail)
-7. Run the below maven command to execute the test cases-
+7. Run maven command to execute the test cases->
       mvn test -DxmlPath='myAssesmentTest.xml'
-8. Check console which prints-
+8. Check console which prints->
     Mail subject on tab '<tabName>' for mail no - '<mailIndexNo>' is:
     Mail Sender on tab '<tabName>' for mail no - '<mailIndexNo>' is:
     '<tabName>' mail counts are
