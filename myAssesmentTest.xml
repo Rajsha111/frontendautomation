@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Automation Test For Front End" verbose="1">
+
+    <test name="Verify primary header is selected by default">
+        <parameter name="tabName" value="SOCIAL"/>
+        <parameter name="mailIndexNo" value="1"/>
+        <classes>
+            <class name="com.logicMonitor.test.MyTest"/>
+            <methods>
+                <include name="verifyPrimaryHeaderDefaultSelect"/>
+                <include name="getSocialSenderNames"/>
+                <include name="getTotalNoOfEmail"/>
+            </methods>
+        </classes>
+    </test>
+</suite>
