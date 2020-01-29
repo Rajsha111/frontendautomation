@@ -1,6 +1,5 @@
 package com.cc.test;
 
-import com.cc.BaseTest;
 import com.cc.web.common.Constant;
 import com.cc.web.common.PageBase;
 import com.cc.web.common.PropertyManager;

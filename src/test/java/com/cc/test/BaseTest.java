@@ -1,4 +1,4 @@
-package com.cc;
+package com.cc.test;
 
 import com.cc.web.common.CreateDriver;
 import com.cc.web.common.PropertyManager;
