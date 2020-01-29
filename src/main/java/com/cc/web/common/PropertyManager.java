@@ -1,4 +1,4 @@
-package com.logicMonitor.web.common;
+package com.cc.web.common;
 
 import java.io.File;
 import java.io.FileInputStream;

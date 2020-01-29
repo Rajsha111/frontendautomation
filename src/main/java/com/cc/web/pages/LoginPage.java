@@ -1,6 +1,6 @@
-package com.logicMonitor.web.pages;
+package com.cc.web.pages;
 
-import com.logicMonitor.web.common.PageBase;
+import com.cc.web.common.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

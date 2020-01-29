@@ -1,11 +1,11 @@
-package com.logicMonitor.test;
+package com.cc.test;
 
-import com.logicMonitor.BaseTest;
-import com.logicMonitor.web.common.Constant;
-import com.logicMonitor.web.common.PageBase;
-import com.logicMonitor.web.common.PropertyManager;
-import com.logicMonitor.web.pages.InboxPage;
-import com.logicMonitor.web.pages.LoginPage;
+import com.cc.BaseTest;
+import com.cc.web.common.Constant;
+import com.cc.web.common.PageBase;
+import com.cc.web.common.PropertyManager;
+import com.cc.web.pages.InboxPage;
+import com.cc.web.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
 

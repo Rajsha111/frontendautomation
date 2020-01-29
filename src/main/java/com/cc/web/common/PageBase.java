@@ -1,4 +1,4 @@
-package com.logicMonitor.web.common;
+package com.cc.web.common;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.FluentWait;

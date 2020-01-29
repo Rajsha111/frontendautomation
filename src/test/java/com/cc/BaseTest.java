@@ -1,7 +1,7 @@
-package com.logicMonitor;
+package com.cc;
 
-import com.logicMonitor.web.common.CreateDriver;
-import com.logicMonitor.web.common.PropertyManager;
+import com.cc.web.common.CreateDriver;
+import com.cc.web.common.PropertyManager;
 import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;

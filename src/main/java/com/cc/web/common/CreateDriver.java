@@ -1,4 +1,4 @@
-package com.logicMonitor.web.common;
+package com.cc.web.common;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

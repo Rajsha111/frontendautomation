@@ -5,7 +5,7 @@
         <parameter name="tabName" value="SOCIAL"/>
         <parameter name="mailIndexNo" value="1"/>
         <classes>
-            <class name="com.logicMonitor.test.MyTest"/>
+            <class name="com.cc.test.MyTest"/>
             <methods>
                 <include name="verifyPrimaryHeaderDefaultSelect"/>
                 <include name="getSocialSenderNames"/>
