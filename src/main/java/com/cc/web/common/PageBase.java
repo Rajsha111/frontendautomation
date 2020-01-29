@@ -61,7 +61,7 @@ public class PageBase {
         try {
             Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(timeLimitInSec, TimeUnit.SECONDS).pollingEvery(pollingTimeSec, TimeUnit.MILLISECONDS)
                     .ignoring(org.openqa.selenium.NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
-            return wait.until(dr -> driver.getTitle().equals(expectedTitle));
+            return wait.until(dr -> driver.getTitle().contains(expectedTitle));
         } catch (Exception e) {
             return false;
         }
