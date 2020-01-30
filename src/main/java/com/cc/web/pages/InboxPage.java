@@ -9,10 +9,11 @@ import org.openqa.selenium.WebDriver;
 public class InboxPage extends PageBase {
 
     private static final String CSS_HEADER = "table > tbody > tr[role='tablist'] > td >div[aria-label='%s']";
-    private static final String CSS_MAIL_SUBJECT = "div.ae4.aDM[style=''] table.F.cf.zt tr:nth-child(%d)  >td > div.yW> span:nth-child(1)";
+    private static final String XPATH_MAIL_SUBJECT = "//div[contains(@class, 'ae4 aDM') and (not(@style) or @style='')]//table[contains(@class, 'F cf zt')]//tr[%d]//td/div[@class='yW']/span[1]";
+    private static final String XPATH_MAIL_SENDER = "//div[contains(@class, 'ae4 aDM') and (not(@style) or @style='')]//table[contains(@class, 'F cf zt')]//tr[%d]//td/div[@class='yW']/span[1]/span";
     private static final String CSS_MAIL_TOTAL_COUNT = "div[aria-label='Show more messages']> span >span:nth-child(2)";
-    private static final String CSS_MAIL_ROW = "div.ae4.aDM[style=''] table.F.cf.zt tr";
-    private static final String CSS_MAIL_ADVERTISE = "div.ae4.aDM[style=''] table.F.cf.zt tr:nth-child(%d)  >td > div.yW> span:nth-child(2)";
+    private static final String XPATH_MAIL_ROW = "//div[contains(@class, 'ae4 aDM') and (not(@style) or @style='')]//table[contains(@class, 'F cf zt')]";
+    private static final String XPATH_MAIL_ADVERTISE = "//div[contains(@class, 'ae4 aDM') and (not(@style) or @style='')]//table[contains(@class, 'F cf zt')]//tr[%d]//td/div[@class='yW']/span[2]";
     private static final String ID_LOGOUT = "gb_71";
 
     public InboxPage(WebDriver driver) {
@@ -56,7 +57,7 @@ public class InboxPage extends PageBase {
      */
     public String getSubject(int index) {
         if (getEmailCountOnScreen() > index)
-            return driver.findElement(By.cssSelector(String.format(CSS_MAIL_SUBJECT, index))).getText();
+            return driver.findElement(By.xpath(String.format(XPATH_MAIL_SUBJECT, index))).getText();
         else
             return Constant.EMAIL_NOT_PRESENT.toUpperCase();
     }
@@ -73,7 +74,7 @@ public class InboxPage extends PageBase {
         } else if (isAdvertiseVisible(index)) {
             return Constant.NO_SENDER_MESSAGE_WHEN_ADD.toUpperCase();
         } else {
-            return driver.findElement(By.cssSelector(String.format(CSS_MAIL_SUBJECT, index))).getAttribute("email");
+            return driver.findElement(By.xpath(String.format(XPATH_MAIL_SENDER, index))).getAttribute("email");
         }
     }
 
@@ -83,7 +84,7 @@ public class InboxPage extends PageBase {
      * @return no of email present in the screen
      */
     private int getEmailCountOnScreen() {
-        return driver.findElements(By.cssSelector(CSS_MAIL_ROW)).size();
+        return driver.findElements(By.xpath(XPATH_MAIL_ROW)).size();
     }
 
     /**
@@ -101,7 +102,7 @@ public class InboxPage extends PageBase {
      * @return True if given mail is add
      */
     private boolean isAdvertiseVisible(int index) {
-        return waitForElementNotNul(By.cssSelector(String.format(CSS_MAIL_ADVERTISE, index)), 2, 5);
+        return waitForElementNotNul(By.xpath(String.format(XPATH_MAIL_ADVERTISE, index)), 2, 5);
     }
 
     /**
@@ -113,7 +114,7 @@ public class InboxPage extends PageBase {
         if (!isMailBoxEmpty())
             return 0;
         else if (waitForElementNotNul(By.cssSelector(CSS_MAIL_TOTAL_COUNT), 2, 5))
-            return driver.findElements(By.cssSelector(CSS_MAIL_TOTAL_COUNT)).size();
+            return Integer.valueOf(driver.findElement(By.cssSelector(CSS_MAIL_TOTAL_COUNT)).getText());
 
         else if (getEmailCountOnScreen() > 0)
             return getEmailCountOnScreen();
